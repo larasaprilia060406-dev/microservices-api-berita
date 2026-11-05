@@ -1,12 +1,18 @@
 <?php
 
-header("Content-Type: application/json");
+$host = "db";
+$user = "root";
+$password = "secretPassword";
+$database = "db_berita";
 
-echo json_encode([
-    "status" => "success",
-    "message" => "Microservices API Berita berjalan",
-    "service" => "API Berita",
-    "endpoint" => "getBerita.php"
-]);
+$conn = new mysqli($host, $user, $password, $database);
+
+if ($conn->connect_error) {
+    die("Koneksi gagal: " . $conn->connect_error);
+}
+
+echo "Koneksi berhasil";
+
+$conn->close();
 
 ?>
